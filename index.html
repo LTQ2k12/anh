@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hê nhô nhaa</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      background: #111;
+    }
+
+    .photo-card {
+      width: 300px;
+      height: 420px;
+      overflow: hidden;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+
+    .photo-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.15);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="photo-card">
+    <img src="xinh.jpg" alt="Xinh">
+  </div>
+
+  <div class="photo-card">
+    <img src="xinh2.jpg" alt="Đẹp">
+  </div>
+
+  <div class="photo-card">
+    <img src="xinh3.jpg" alt="Ngầu">
+  </div>
+
+</body>
+</html>
