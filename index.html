@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hê nhô nhaa</title>
+  <title>Khoe Ảnh + Nhạc + Tuyết</title>
   <style>
     body {
       margin: 0;
@@ -14,8 +14,10 @@
       flex-wrap: wrap;
       gap: 25px;
       background: #111;
+      overflow: hidden;
     }
 
+    /* Card ảnh */
     .photo-card {
       width: 300px;
       height: 420px;
@@ -23,6 +25,8 @@
       border-radius: 18px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.6);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      z-index: 2;
     }
 
     .photo-card img {
@@ -41,21 +45,73 @@
     .photo-card:hover img {
       transform: scale(1.15);
     }
+
+    /* Tuyết rơi */
+    .snow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .snow span {
+      position: absolute;
+      top: -10px;
+      color: #fff;
+      font-size: 1em;
+      opacity: 0.9;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0.2;
+      }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Thẻ audio phát nhạc -->
+  <audio autoplay loop controls style="position: fixed; bottom: 20px; right: 20px; z-index: 3;">
+    <source src="your-music.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát nhạc.
+  </audio>
+
+  <!-- Ảnh -->
   <div class="photo-card">
     <img src="xinh.jpg" alt="Xinh">
   </div>
 
   <div class="photo-card">
-    <img src="xinh2.jpg" alt="Đẹp">
+    <img src="xinh2.jpg" alt="Xinh 2">
   </div>
 
   <div class="photo-card">
-    <img src="xinh3.jpg" alt="Ngầu">
+    <img src="xinh3.jpg" alt="Xinh 3">
   </div>
+
+  <!-- Hiệu ứng tuyết -->
+  <div class="snow" id="snow"></div>
+
+  <script>
+    // Tạo tuyết rơi
+    const snowContainer = document.getElementById("snow");
+    const snowCount = 50; // số bông tuyết
+    for (let i = 0; i < snowCount; i++) {
+      const snowflake = document.createElement("span");
+      snowflake.innerHTML = "❄";
+      snowflake.style.left = Math.random() * 100 + "vw";
+      snowflake.style.fontSize = (Math.random() * 15 + 10) + "px";
+      snowflake.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      snowflake.style.opacity = Math.random();
+      snowContainer.appendChild(snowflake);
+    }
+  </script>
 
 </body>
 </html>
